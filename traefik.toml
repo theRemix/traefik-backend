@@ -4,6 +4,8 @@ defaultEntryPoints = ["http"]
   [entryPoints.http]
   address = ":80"
 
+[file]
+
 [frontends]
   [frontends.frontend1]
   backend = "node-backend"
