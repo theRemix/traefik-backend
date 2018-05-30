@@ -1,0 +1,15 @@
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+
+[frontends]
+  [frontends.frontend1]
+  backend = "node-backend"
+  passHostHeader = true
+
+[backends]
+  [backends.node-backend]
+    [backends.node-backend.servers.server1]
+    url = "http://node-app:3000"

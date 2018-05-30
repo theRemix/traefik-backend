@@ -1,0 +1,17 @@
+version: '3'
+services:
+  node-app:
+    build: node-app
+    restart: always
+  traefik:
+    image: traefik:alpine
+    volumes:
+      - ./traefik.toml:/etc/traefik/traefik.toml:ro
+    depends_on:
+      - node-app
+    links:
+      - node-app
+    ports:
+      - "${PORT:-8080}:80"
+    restart: always
+    command: traefik --configfile=/etc/traefik/traefik.toml
